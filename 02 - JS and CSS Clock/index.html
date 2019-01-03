@@ -70,16 +70,24 @@
 
   </style>
   <script>
+  //grab html elements by their classes
   const secondHand = document.querySelector('.second-hand')
   const minHand = document.querySelector('.min-hand')
   const hourHand = document.querySelector('.hour-hand')
+
+  //write function that gets current date
   function setDate() {
+    //save current time in variable
     const now = new Date()
 
+    //save current seconds in a variable
     const seconds = now.getSeconds()
+    //do tricky math to make up for css transform degrees, save in variable
     const secondsDegrees = ((seconds / 60) * 360) + 90
+    //use variable to update css according to seconds in current date
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`
 
+    //repeat for minutes and hours
     const mins = now.getMinutes()
     const minsDegrees = ((mins / 60) * 360) + 90
     minHand.style.transform = `rotate(${minsDegrees}deg)`
