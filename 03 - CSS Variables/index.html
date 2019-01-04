@@ -21,6 +21,7 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    /* CSS Variables (match html input tags 'name' property) */
     :root {
       --base: #ffc600;
       --spacing: 10px;
@@ -60,14 +61,20 @@
     }
   </style>
 
+
   <script>
+    // get all inputs and save in variable
     const inputs = document.querySelectorAll('.controls input')
 
+    //create function to handle the user updates
     function handleUpdate() {
+      //save all suffix for the datasets (in this case it's px, however basecolor does not have a suffix so add the || '' to account for the null
       const suffix = this.dataset.sizing || '';
+      //grab the element and apply new property to using style, use the property name and the new value, and then add the suffix (px)
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
     }
 
+    //grab each input and apply the event listener and handleUpdate function
     inputs.forEach(input => input.addEventListener('change', handleUpdate))
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
     </script>
